@@ -1,0 +1,107 @@
+﻿@model AppLaercio.Models.Viagem;
+
+@{
+    ViewData["Title"] = "Destinos";
+    var viagens = ViewData["viagens"] as List<Viagem>;
+}
+
+<h1 class="text-center">Destinos</h1>
+<br/>
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 mx-auto">
+            <h2>Escolha o seu destino!</h2>
+
+            <div class="card-group text-center">
+                <div class="card">
+                    <img class="card-img-top" src="~/img/Cristo.jpg" alt="Cristo Redentor">
+                    <div class="card-body">
+                        <h5 class="card-title">Cristo Redentor</h5>
+                        <p class="card-text">Cristo Redentor é uma estátua art déco que retrata Jesus Cristo, localizada no topo do morro do Corcovado, a 709 metros acima do nível do mar, no Parque Nacional da Tijuca, com vista para a maior parte da cidade do Rio de Janeiro, Brasil.</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">R$ 5500,00</small>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="/img/farol-da-barra.jpg" alt="Farol da Barra">
+                    <div class="card-body">
+                        <h5 class="card-title">Farol da Barra</h5>
+                        <p class="card-text">O farol da Barra teve um papel de extrema importância nas navegações durante o período de colonização do nosso país. Ele foi construído após a invasão dos holandeses ao Forte de Santo Antônio da Barra, instalado no mesmo espaço do farol para dar suporte aos navegadores e identificar invasões de estrangeiros.</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">R$ 7799,00</small>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="/img/eiffel.jpg" alt="Torre Eiffel">
+                    <div class="card-body">
+                        <h5 class="card-title">Torre Eiffel</h5>
+                        <p class="card-text">A Torre Eiffel é uma torre de treliça de ferro forjado no Champ de Mars em Paris, França. Recebeu o nome do engenheiro Gustave Eiffel, cuja empresa projetou e construiu a torre.</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">R$ 15099,00</small>
+                    </div>
+                </div>
+            </div>
+
+            <br/>
+
+            <div class="card-group text-center">
+                <div class="card">
+                    <img class="card-img-top" src="/img/disneyland.jpg" alt="Disneyland">
+                    <div class="card-body">
+                        <h5 class="card-title">Disneyland</h5>
+                        <p class="card-text">O Disneyland Park, originalmente Disneyland e comumente referido em português como a Disneylândia,[1] é o primeiro de dois parques temáticos construídos no Disneyland Resort em Anaheim, California, inaugurado em 17 de julho de 1955. </p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">R$ 13999,00</small>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="~/img/noronha.jpg" alt="Fernando de Noronha">
+                    <div class="card-body">
+                        <h5 class="card-title">Fernando de Noronha</h5>
+                        <p class="card-text">Fernando de Noronha é um arquipélago vulcânico situado a cerca de 350 quilómetros ao largo da costa nordeste do Brasil. Tem o nome da sua maior ilha, um parque marinho e santuário ecológico protegido com uma linha costeira recortada e vários ecossistemas.</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">R$ 9899,00</small>
+                    </div>
+                </div>
+            </div>
+
+            <hr />
+            <h2>Comprar passagem</h2>
+            <form asp-controller="Destino" asp-action="Index">
+                <div class="form-group">
+                    <label for="">Nome do viajante</label>
+                    <input asp-for="Viajante" type="text" class="form-control" id="" placeholder="Digite seu nome">
+                </div>
+
+                <div class="form-group">
+                    <label for="">Destinos</label>
+                    <select class="custom-select" asp-for="Destino">
+                        <option selected>Escolha um destino...</option>
+                        <option>Cristo Redentor</option>
+                        <option>Disneyland</option>
+                        <option>Torre Eiffel</option>
+                        <option>Farol da Barra</option>
+                        <option>Fernando de Noronha</option>
+                    </select>
+                </div>
+
+
+                <div class="form-check">
+                    <input asp-for="TemGuia" type="checkbox" id="checkn1" class="form-check-input">
+                    <label class="form-check-label" for="checkn1">Guia Turistico (+ R$ 499,00)</label>
+                </div>
+
+                <br />
+
+                <button type="submit" class="btn btn-success">Confirmar viagem</button>
+            </form>
+            <br />
+            <hr />
+        </div>
+    </div>
+</div>

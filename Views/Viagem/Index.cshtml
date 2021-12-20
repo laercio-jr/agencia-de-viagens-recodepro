@@ -1,0 +1,125 @@
+﻿@model AppLaercio.Models.Viagem;
+
+@{
+    ViewData["Title"] = "Portal do ADM";
+    var viagens = ViewData["viagens"] as List<Viagem>;
+}
+
+<h1>Controle de Viagens (Restrito)</h1>
+<div class="container">
+    <div class="row centralizar">
+        <div class="col-md-10">
+            <h2>Lista de viagens Confirmadas</h2>
+            <table class="text-center table table-striped table-bordered table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Id</th>
+                        <th>Viajante</th>
+                        <th>Destino</th>
+                        <th>Guia turístico</th>
+                        <th>X</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        foreach (var viagem in viagens)
+                        {
+                            <tr>
+                                <td>@viagem.Id</td>
+                                <td>@viagem.Viajante</td>
+                                <td>@viagem.Destino</td>
+                                <td>@viagem.TemGuia</td>
+                                <td>
+                                    <form asp-controller="Viagem" asp-action="Deletar">
+                                        <button class="btn btn-danger" type="submit">Deletar</button>
+                                        <input asp-for="Id" style="visibility:hidden;" type="text" value="@viagem.Id">
+                                    </form>
+                                </td>
+                            </tr> 
+                        }
+                    }
+                </tbody>
+            </table>
+            
+            
+            <hr />
+            <div class="container d-flex justify-content-around">
+                <div>
+                    <h2>Cadastrar viagem</h2>
+                    <form asp-controller="Viagem" asp-action="Index">
+                        <div class="form-group">
+                            <label for="">Nome do viajante</label>
+                            <input asp-for="Viajante" type="text" class="form-control" id="" placeholder="Digite um nome">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">Destinos</label>
+                            <select class="custom-select" asp-for="Destino">
+                                <option selected>Escolha um destino...</option>
+                                <option>Cristo Redentor</option>
+                                <option>Disneyland</option>
+                                <option>Torre Eiffel</option>
+                                <option>Farol da Barra</option>
+                                <option>Fernando de Noronha</option>
+                            </select>
+                        </div>
+
+                        <div class="form-check">
+                            <input asp-for="TemGuia" type="checkbox" id="checkn1" class="form-check-input">
+                            <label class="form-check-label" for="checkn1">Guia Turistico</label>
+                        </div>
+
+                        <br/>
+
+                        <button type="submit" class="btn btn-success">Confirmar viagem</button>
+                    </form>
+                </div>
+
+                <div>
+                    <h2>Atualizar Dados</h2>
+                    <form asp-controller="Viagem" asp-action="Atualizar">
+                        <div class="form-group ">
+                            <label for="">ID da viagem</label>
+                            <select class="custom-select" asp-for="Id">
+                                <option selected>-- Selecione um código</option>
+                                /* @{
+                                    foreach (var viagem in viagens)
+                                    {
+                                        <option>@viagem.Id</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">Nome do viajante</label>
+                            <input asp-for="Viajante" type="text" class="form-control" id="" placeholder="Digite seu nome">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">Destinos</label>
+                            <select class="custom-select" asp-for="Destino">
+                                <option selected>Escolha um destino...</option>
+                                <option>Cristo Redentor</option>
+                                <option>Disneyland</option>
+                                <option>Torre Eiffel</option>
+                                <option>Farol da Barra</option>
+                                <option>Fernando de Noronha</option>
+                            </select>
+                        </div>
+
+
+                        <div class="form-check">
+                            <input asp-for="TemGuia" type="checkbox" id="checkn1" class="form-check-input">
+                            <label class="form-check-label" for="checkn1">Guia Turistico</label>
+                        </div>
+
+                        <br />
+
+                        <button type="submit" class="btn btn-primary">Alterar</button>
+
+                    </form>
+                </div>
+            </div>
+    </div>
+</div>
